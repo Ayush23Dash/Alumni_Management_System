@@ -1,0 +1,23 @@
+body{
+  position: relative;
+}
+
+nav{
+  font-family: 'Tomorrow', sans-serif;
+}
+nav h3{
+  display: inline-block;
+       margin-left: auto;
+       margin-right: auto;
+       margin-top: -30px;
+}
+input,select{
+  border-radius: 5px;
+}
+form{
+  background-image: url("/images/form.jpg");
+  text-align:  center;
+  width:40%;
+  position: absolute;
+  left: 30%;
+}
