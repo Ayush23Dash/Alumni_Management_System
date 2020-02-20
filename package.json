@@ -1,0 +1,24 @@
+{
+  "name": "alumnus",
+  "version": "1.0.0",
+  "description": "This is an Alumni Management System",
+  "main": "\u001b[D\u001b[D\u001b[D\u001bapp\u001b[3~\u001b[3~\u001b[C\u001b",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayush23Dash/Alumni_Management_System.git"
+  },
+  "author": "Ayush Shankar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayush23Dash/Alumni_Management_System/issues"
+  },
+  "homepage": "https://github.com/Ayush23Dash/Alumni_Management_System#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}

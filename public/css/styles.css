@@ -1,0 +1,106 @@
+body{
+  text-align: center;
+  position: relative;
+}
+.a{
+  font-family: 'Tomorrow', sans-serif;
+}
+h4{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+@media screen and (min-width:992px) {
+  .br{
+    display: none;
+  }
+}
+/* NAVBAR END */
+/* BACKGROUND START */
+.background{
+  color: #48b0ab;
+  background-image: url("/images/alumni.jpg") ;
+  background-repeat: no-repeat center center fixed;
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.background ol,p{
+  font-size: 20px;
+}
+
+@media only screen and (max-width:992px) {
+  .a{
+    width:70%;
+  }
+  .signup{
+  position: absolute;
+  left: 5px;
+  top:100%;
+  }
+  .login{
+position: absolute;
+right: 5px;
+top:100%;
+  }
+}
+/* BACKGROUND END */
+/* STAT CIRCLES START*/
+.circle1 {
+  width: 100px;
+  height: 100px;
+  background-color: #06880E;
+  margin: auto;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.circle2 {
+  width: 100px;
+  height: 100px;
+  background-color: #CC4647;
+  margin: auto;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.circle3 {
+  width: 100px;
+  height: 100px;
+  background-color: #ffcc00;
+  margin: auto;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.col-lg-4 p {
+  text-align: center;
+  font-weight: bold;
+}
+
+.p-light {
+  font-weight: lighter;
+}
+
+/* STATS END */
+/* FOOTER START */
+.footer{
+  text-align: center;
+  background-color: black;
+  color:#fbfbfb;
+}
+.footer li{
+  padding-bottom: 10px;
+}
+.vl{
+  border-left: 5px solid grey;
+  height: 200px;
+  position: absolute;
+  right:0;
+  top: 0;
+}
+@media only screen and (max-width:992px) {
+  .vl{
+    display: none;
+  }
+}
+/* FOOTER END */
