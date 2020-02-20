@@ -5,19 +5,36 @@ body{
 nav{
   font-family: 'Tomorrow', sans-serif;
 }
-nav h3{
-  display: inline-block;
-       margin-left: auto;
-       margin-right: auto;
-       margin-top: -30px;
-}
+
 input,select{
   border-radius: 5px;
 }
 form{
   background-image: url("/images/form.jpg");
   text-align:  center;
-  width:40%;
-  position: absolute;
-  left: 30%;
+
+}
+@media screen and (max-width:992px) {
+  input{
+    width:80%;
+  }
+  form{
+    width:60%;
+    position: absolute;
+    left: 20%;
+  }
+}
+
+@media screen and (min-width:992px) {
+  nav h3{
+    display: inline-block;
+         margin-left: auto;
+         margin-right: auto;
+         margin-top: -30px;
+  }
+  form{
+    width:40%;
+    position: absolute;
+    left: 30%;
+  }
 }
