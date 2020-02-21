@@ -11,7 +11,7 @@ input,select{
   border-radius: 5px;
 }
 form{
-  background-image: url("/images/form.jpg");
+  background-image: url("/images/login.jpg");
   text-align:  center;
 
 }
@@ -23,6 +23,7 @@ form{
     width:60%;
     position: absolute;
     left: 20%;
+    height: 80%;
   }
 }
 
@@ -35,6 +36,7 @@ form{
   }
   form{
     width:40%;
+    height: 100%;
     position: absolute;
     left: 30%;
   }
