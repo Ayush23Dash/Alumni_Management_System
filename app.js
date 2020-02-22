@@ -6,7 +6,8 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
-const flash = require("flash");
+// const flash = require("flash");
+const flash = require("connect-flash");
 // Passport
 const app = express();
 app.set("view engine","ejs");
@@ -20,7 +21,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 // app.use(session()); // session middleware
-app.use(require('flash')());
+app.use(flash());
 
 mongoose.connect("mongodb://localhost:27017/userDb",{useNewUrlParser:true,useUnifiedTopology: true});
 mongoose.set("useCreateIndex",true);
@@ -48,26 +49,18 @@ app.get("/signup",function(req,res)
 });
 app.get("/login",function(req,res)
 {
-  res.render("login");
+  const errors = req.flash().error || [];
+  res.render("login",{errors});
 });
 app.get("/:username",function(req,res)
 {
+  let user = req.params.username;
   if(req.isAuthenticated()){
-    res.render("dashboard");
+    res.render("dashboard",{username:user});
   }else{
     res.redirect("/login");
   }
 });
-
-// app.get('/logout', function (req, res, next) {
-// // Get rid of the session token. Then call `logout`; it does no harm.
-// req.logout();
-// req.session.destroy(function (err) {
-//   if (err) { return next(err); }
-//   // The response should indicate that the user is no longer authenticated.
-//   return res.send({ authenticated: req.isAuthenticated() });
-// });
-// });
 
 // POST ROUTES
 app.post("/signup",function(req,res)
@@ -90,19 +83,18 @@ app.post("/signup",function(req,res)
 });
 
 app.post('/login',
-  passport.authenticate('local'),
+  passport.authenticate('local',{
+    faliureFlash:true,
+    failureRedirect:"/login"
+  }),
   function(req, res) {
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
     res.redirect('/' + req.user.username);
   });
-// app.post("/login",passport.authenticate("local",{
-//   successRedirect: "/",
-//   failureRedirect: "/login"
-// }));
-  app.get('/logout', function(req, res){
+
+  app.post('/logout', function(req, res){
     console.log("Logging Out...");
-    console.log(req.user.username);
     req.logout();
     res.redirect('/');
   });
