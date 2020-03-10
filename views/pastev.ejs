@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/aldash.css">
+    <link rel="stylesheet" href="/css/pastev.css">
 
     <title>Alumni Dashboard</title>
   </head>
@@ -19,7 +19,7 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/<%=username%>/pastev">PAST EVENTS</a>
+        <a class="nav-link" href="/<%=username%>/aldash">ALUMNI INFO</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/<%=username%>/post">ADD POSTS</a>
@@ -47,28 +47,23 @@
 </nav>
 <!-- NAVBAR END -->
 <br><br>
-<h1>ALUMNI DETAILS</h1>
-<!-- CARD START -->
-<% for(let i=0;i<data.length;i++){ %>
-<% if(data[i].designation === "Alumnus") { %>
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Name:<%=data[i].name1%>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Email:<%=data[i].email%></li>
-    <li class="list-group-item">Phone:<%=data[i].mobile%></li>
-  </ul>
-  <div>
-  <a style="width:100%;color:red;background-color:#28A745;" target="_blank" href="https://api.whatsapp.com/send?phone=91<%=data[i].mobile%>"><button type="button" class="btn btn-success">WhatsApp</button></a>
+<h2>Short Clips Of Previous Students</h2>
+<div class="card">
+  <h5 class="card-header">Title</h5>
+  <div class="card-body">
+    <h5 class="card-title">Beans on the floor</h5>
+    <p class="card-text">
+      <iframe  height="315" src="https://www.youtube.com/embed/YYFM-wggh6s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </p>
+
   </div>
 </div>
-<br>
-<br>
-<% } %>
-<% } %>
-<!-- CARD END -->
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ </body>
 </html>

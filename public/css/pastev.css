@@ -1,0 +1,17 @@
+nav{
+  background-color: #376ECA;
+  font-family: 'Roboto Mono', monospace;
+  /* height: 70px; */
+}
+nav li{
+  padding:0 90px;
+}
+body{
+  text-align: center;
+}
+.card{
+  margin-left: auto;
+ margin-right: auto;
+ /* width: 8em; */
+ background: linear-gradient(#00C9FF,#92FE9D);
+}

@@ -153,6 +153,30 @@ app.get("/:username/post", function(req, res) {
     }
   });
 });
+app.get("/:username/pastev",(req,res) => {
+  let user = req.params.username;
+  User.find({}, function(err, data) {
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].username === user) {
+        let name = data[i].name1;
+        let desig = data[i].designation;
+        let em = data[i].email;
+        if (req.isAuthenticated()) {
+          res.render("pastev", ({
+            username: user,
+            name,
+            desig,
+            em,
+            data
+          }));
+        } else {
+          res.redirect("/login");
+        }
+      }
+    }
+  });
+});
 // POST ROUTES
 app.post("/signup", function(req, res) {
   User.register({
