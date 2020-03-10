@@ -10,47 +10,62 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <!-- <h1>Hello World</h1> -->
-<nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">ALUMNI MANAGEMENT SYSTEM</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/<%=username%>/aldash">ALUMNUS INFO <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">PAST EVENTS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ADD POSTS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">ADD EVENTS</a>
-      </li>
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">ALUMNI MANAGEMENT SYSTEM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/<%=username%>/aldash">ALUMNUS INFO <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PAST EVENTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/<%=username%>/post">ADD POSTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ADD EVENTS</a>
+          </li>
 
 
-      <li class="nav-item dropdown">
-     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <%=username%>
-     </a>
-     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item">Name:<%=name%></a>
-            <a class="dropdown-item">Designation:<%=desig%></a>
-            <a class="dropdown-item">Email:<%=em%></a>
-          </div>
-        </li>
-   <li>
-         <form class="" action="/logout" method="post">
-           <a><button class="btn btn-success"name="logout">Logout</button></a>
-         </form>
-   </li>
-    </ul>
+          <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <%=username%>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item">Name:<%=name%></a>
+                <a class="dropdown-item">Designation:<%=desig%></a>
+                <a class="dropdown-item">Email:<%=em%></a>
+              </div>
+            </li>
+       <li>
+             <form class="" action="/logout" method="post">
+               <a><button class="btn btn-success"name="logout">Logout</button></a>
+             </form>
+       </li>
+        </ul>
+      </div>
+    </nav>
+<!-- NAVBAR END -->
+<% for(var i=0;i<pdata.length;i++){ %>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4"><%=pdata[i].title%></h1>
+    <p class="lead"><%=pdata[i].post%></p>
+    <button type="button" class="btn btn-outline-danger" disabled>Post By <%=pdata[i].usern%></button>
   </div>
-</nav>
-
+  <br>
+  <% if(pdata[i].usern === username){ %>
+    <form class="delete" action="/delete" method="post">
+          <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  <% } %>
+</div>
+  <% } %>
 
 
  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

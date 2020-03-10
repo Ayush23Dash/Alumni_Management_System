@@ -39,8 +39,15 @@ const userSchema = new mongoose.Schema({
   mobile: Number
 });
 
+const postSchema = new mongoose.Schema({
+  usern: String,
+  title: String,
+  post: String
+});
+
 userSchema.plugin(passportLocalMongoose);
 const User = new mongoose.model("User", userSchema);
+const Post = new mongoose.model("Post", postSchema);
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -69,25 +76,28 @@ app.get("/:username", function(req, res) {
         let desig = data[i].designation;
         let em = data[i].email;
         if (req.isAuthenticated()) {
-          res.render("dashboard", ({
-            username: user,
-            name,
-            desig,
-            em
-          }));
+          Post.find({}, function(err, pdata) {
+            res.render("dashboard", ({
+              username: user,
+              pdata,
+              name,
+              desig,
+              em
+            }));
+
+
+          });
         } else {
           res.redirect("/login");
         }
-      } else {
-        console.log("User not found in this iteration");
       }
     }
   });
 
+
 });
 
-app.get("/:username/aldash",function(req,res)
-{
+app.get("/:username/aldash", function(req, res) {
   let user = req.params.username;
   User.find({}, function(err, data) {
 
@@ -107,12 +117,34 @@ app.get("/:username/aldash",function(req,res)
         } else {
           res.redirect("/login");
         }
-      } else {
-        console.log("User not found in this iteration");
       }
     }
   });
 
+});
+app.get("/:username/post", function(req, res) {
+  let user = req.params.username;
+  User.find({}, function(err, data) {
+
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].username === user) {
+        let name = data[i].name1;
+        let desig = data[i].designation;
+        let em = data[i].email;
+        if (req.isAuthenticated()) {
+          res.render("adpost", ({
+            username: user,
+            name,
+            desig,
+            em,
+            data
+          }));
+        } else {
+          res.redirect("/login");
+        }
+      }
+    }
+  });
 });
 // POST ROUTES
 app.post("/signup", function(req, res) {
@@ -129,12 +161,12 @@ app.post("/signup", function(req, res) {
     } else {
       passport.authenticate("local")(req, res, function() {
         res.redirect("/" + req.body.username);
-        // res.render("dashboard");
         console.log("Data saved in DB");
       });
     }
   });
 });
+
 
 app.post('/login',
   passport.authenticate('local', {
@@ -147,12 +179,50 @@ app.post('/login',
     res.redirect('/' + req.user.username);
   });
 
-app.post('/logout', function(req, res) {
+app.post('/logout', (req, res) => {
   console.log("Logging Out...");
   req.logout();
   res.redirect('/');
 });
 
+app.post("/:username", (req, res) => {
+  // res.render("dashboard",{username:req.params.user});
+  let user = req.params.username;
+  let title = req.body.title;
+  let post = req.body.post;
+  let np = new Post({
+    usern: user,
+    title: title,
+    post: post
+  });
+  np.save((err) => {
+    if (err)
+      return handleError(err);
+  });
+
+  User.find({}, function(err, data) {
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].username === user) {
+        let name = data[i].name1;
+        let desig = data[i].designation;
+        let em = data[i].email;
+        if (req.isAuthenticated()) {
+          Post.find({}, function(err, pdata) {
+            res.render("dashboard", ({
+              username: user,
+              pdata,
+              name,
+              desig,
+              em
+            }));
+          });
+        } else {
+          res.redirect("/login");
+        }
+      }
+    }
+  });
+});
 
 
 app.listen(3000, function() {

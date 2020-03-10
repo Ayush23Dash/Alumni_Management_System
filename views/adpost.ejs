@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width , initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/aldash.css">
-
-    <title>Alumni Dashboard</title>
+    <link rel="stylesheet" href="/css/adpost.css">
+    <title>Add Post</title>
   </head>
   <body>
     <!-- NAVBAR START -->
-<nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
   <a class="navbar-brand" href="/<%=username%>">ALUMNI MANAGEMENT SYSTEM</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -19,10 +18,10 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">PAST EVENTS</a>
+        <a class="nav-link" href="/<%=username%>/aldash">ALUMNUS INFO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/<%=username%>/post">ADD POSTS</a>
+        <a class="nav-link" href="#">PAST EVENTS</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">ADD EVENTS</a>
@@ -46,31 +45,25 @@
    </li>
     </ul>
   </div>
-</nav>
-<!-- NAVBAR END -->
-<br><br>
-<h1>ALUMNI DETAILS</h1>
-<!-- CARD START -->
-<% for(let i=0;i<data.length;i++){ %>
-<% if(data[i].designation === "Alumnus") { %>
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Name:<%=data[i].name1%>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Email:<%=data[i].email%></li>
-    <li class="list-group-item">Phone:<%=data[i].mobile%></li>
-  </ul>
-  <div>
-  <a style="width:100%;color:red;background-color:#28A745;" target="_blank" href="https://api.whatsapp.com/send?phone=91<%=data[i].mobile%>"><button type="button" class="btn btn-success">WhatsApp</button></a>
-  </div>
+
+  </nav>
+  <!-- NAVBAR END -->
+ <!-- FORM START -->
+ <h1>Add Posts</h1>
+ <form action="/<%=username%>" method="post">
+   <div class="form-group">
+     <label for="exampleInputEmail1">Title</label>
+     <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Title">
+   </div>
+   <div class="form-group">
+  <label for="comment">Post</label>
+  <textarea  name="post" class="form-control" rows="5" id="comment"></textarea>
 </div>
-<br>
-<br>
-<% } %>
-<% } %>
-<!-- CARD END -->
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <button type="submit" class="btn btn-primary">Submit</button>
+ </form>
+ <!-- FORM END -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
