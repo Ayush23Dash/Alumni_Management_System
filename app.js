@@ -54,7 +54,14 @@ passport.deserializeUser(User.deserializeUser());
 
 // GET ROUTES
 app.get("/", function(req, res) {
-  res.render("home");
+  let i = 0;
+  if(req.isAuthenticated()){
+    let user = req.user.username;
+    i = 1;
+    res.render("home",({check:i,user}));
+  }else{
+  res.render("home",({check:i}));
+}
 });
 app.get("/signup", function(req, res) {
   res.render("signup");
@@ -223,6 +230,7 @@ app.post("/:username", (req, res) => {
     }
   });
 });
+
 
 
 app.listen(3000, function() {

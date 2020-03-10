@@ -14,12 +14,29 @@
   <a class="navbar-brand"><img style="width:80px;height:80px;" src="images/logo.PNG" alt=""></a>
 <h3 class="a">ALUMNI MANAGEMENT SYSTEM</h3>
   <form class="form-inline">
+    <!-- Check=1 ==> Logged In|| Check=0 ==> Logged Out -->
+    <% if(check === 0) { %>
     <div class="signup">
       <a href="/signup"><button class="btn btn-outline-success" type="button">Sign Up</button></a>
     </div>
+    <% } %>
+    <% if(check === 1) { %>
+  <div class="signup">
+    <form class="" action="/logout" method="post">
+      <a href="/"><button class="btn btn-success"name="logout" type="submit">Logout</button></a>
+    </form>
+  </div>
+    <% } %>
+      <% if(check === 0) { %>
     <div class="login">
-    <a href="/login"><button class="btn btn-md btn-outline-secondary" type="button">Login</button></a>
+    <a href="/login"><button type="button" class="btn btn-info">Login</button></a>
     </div>
+      <% } %>
+      <% if(check === 1) { %>
+    <div class="login">
+    <a href="/<%=user%>"><button class="btn btn-md btn-outline-secondary" type="button">Dashboard</button></a>
+    </div>
+      <% } %>
   </form>
 </nav>
 <div class="br">
@@ -35,7 +52,6 @@
   <br><br>
   <ol style="list-style:none;">
     <li>Add Posts</li>
-    <li>Add Events</li>
     <li>See Alumni Information</li>
     <li>Chat</li>
   </ol>

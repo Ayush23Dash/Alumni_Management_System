@@ -12,7 +12,7 @@
   <body>
     <!-- NAVBAR START -->
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="#">ALUMNI MANAGEMENT SYSTEM</a>
+      <a class="navbar-brand" href="/">ALUMNI MANAGEMENT SYSTEM</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,9 +27,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/<%=username%>/post">ADD POSTS</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">ADD EVENTS</a>
-          </li>
+
 
 
           <li class="nav-item dropdown">
@@ -62,6 +60,7 @@
   <% if(pdata[i].usern === username){ %>
     <form class="delete" action="/delete" method="post">
           <button type="submit" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger"><%=pdata[i]._id%></button>
     </form>
   <% } %>
 </div>
