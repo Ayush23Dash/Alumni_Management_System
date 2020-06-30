@@ -18,4 +18,9 @@ npm install
 node app.js
 ```
 
+### Open Browser
+```
+localhost:3000
+```
+
 
